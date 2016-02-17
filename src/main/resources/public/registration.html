@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Registration</title>
 <link href="stylesheets/style.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="js/registration.js"></script>
 </head>
 
 <body>
@@ -22,21 +23,69 @@
   <form id="register">
      <fieldset>
     <legend>Register</legend>   
-   <p><label for="username">Username</label><input type="text" name="username" id="username"/></p>
-   <p><label for="password">Password</label><input type="password" name="password" id="password"/></p>
-   <p><label for="repassword">Confirm Password</label><input type="password" name="repassword" id="repassword"/></p>
-   <p><label for="email">Email</label><input type="email" name="email" id="email"/></p>
-   <p><label for="fname">First Name</label><input type="text" name="fname" id="fname"/></p>
-   <p><label for="lname">Last Name</label><input type="text" name="lname" id="lname"/></p>
-   <p><label for="male">Gender</label><input type="radio" name="gender" id="male"/>&nbsp;Male&nbsp;&nbsp;<input type="radio" 
+   <p><label for="username">Username*</label><input type="text" name="username" id="username" placeholder="Enter your username"/></p>
+   <p><label for="password">Password*</label><input type="password" name="password" id="password"/></p>
+   <p><label for="repassword">Confirm Password*</label><input type="password" name="repassword" id="repassword"/></p>
+   <p><label for="email">Email*</label><input type="email" name="email" id="email"/></p>
+   <p><label for="fname">First Name*</label><input type="text" name="fname" id="fname"/></p>
+   <p><label for="lname">Last Name*</label><input type="text" name="lname" id="lname"/></p>
+   <p><label for="male">Gender*</label><input type="radio" name="gender" id="male"/>&nbsp;Male&nbsp;&nbsp;<input type="radio" 
    name="gender" id="female"/>&nbsp;Female</p>
-   <p><label for="language"> Native Language</label><input type="checkbox" id="language"/></p>   
+   <p><label for="language"> Native Language*</label>
+    <select name="language" id="language" onChange="showOther(this)">
+    <option value ="chinese" selected="selected">Chinese</option>
+    <option value="english">English</option>
+    <option value="french">French</option>
+    <option value="german">German</option>
+    <option value="hindi">Hindi</option>    
+    <option value ="japanese">Japanese</option>
+    <option value ="korean">Korean</option>    
+    <option value ="portuguese">Portuguese</option>
+    <option value="russian">Russian</option>
+    <option value="spanish">Spanish</option>
+    <option value="other">Other</option> 
+    </select>
+    <input type="text" id="nother" placeholder="Native Language"/>  
+   </p>
+   <p><label for="planguage"> Practise Language*</label>
+    <select name="planguage" id="planguage" onChange="showOther(this)">
+    <option value ="chinese" >Chinese</option>
+    <option value="english" selected="selected">English</option>
+    <option value="french">French</option>
+    <option value="german">German</option>
+    <option value="hindi">Hindi</option>    
+    <option value ="japanese">Japanese</option>
+    <option value ="korean">Korean</option>    
+    <option value ="portuguese">Portuguese</option>
+    <option value="russian">Russian</option>
+    <option value="spanish">Spanish</option>
+    <option value="other">Other</option>    
+    </select>
+    <input type="text" id="pother" placeholder="Practise Language"/>
+   </p>
+   <p><label for="topic">Interested Topic</label>
+    <select name="topic" id="topic" onChange="showOther(this)">
+    <option value="animals" selected="selected">Animals</option>
+    <option value ="beauty">Beauty</option>
+    <option value="books">Books</option>
+    <option value="cooking">Cooking</option>
+    <option value="culture">Culture</option> 
+    <option value="movies">Movies</option>
+    <option value="music">Music</option>    
+    <option value ="sports">Sports</option>
+    <option value ="technology">Technology</option>
+    <option value ="television">Television</option>        
+    <option value="travel">Travel</option>          
+    </select>
+    <input type="button" name="add" value="Add Another" onClick="addAnother()"/>(Maximum:3)    
+   </p>
+   <p id="newtopic"></p>     
    <p id="rbutton"><input type="submit" value="Submit"/></p>         
    </fieldset> 
   </form>
   </div>
   <div id="footer">
-   <p>Copyright</p>
+   <p>Copyright © 2016 Huizhi Zhong</p>
   </div>
 </div>
 
