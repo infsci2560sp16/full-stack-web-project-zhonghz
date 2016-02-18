@@ -2,8 +2,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Find A Match</title>
+<title>Forum</title>
 <link href="stylesheets/style.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="js/forum.js"></script>
 </head>
 
 <body>
@@ -47,11 +48,6 @@
     <option value="russian">Russian</option>
     <option value="other">Other</option>    
     </select>
-    <label for="gender">&nbsp;Gender</label>
-    <select name="gender" id="gender">
-    <option value="male">Male</option>
-    <option value="female">Female</option>   
-    </select>
     <label for="topic">&nbsp;Interested Topic</label>
     <select name="topic" id="topic">
     <option value="animals" selected="selected">Animals</option>
@@ -65,57 +61,53 @@
     <option value ="technology">Technology</option>
     <option value ="television">Television</option>        
     <option value="travel">Travel</option>
-    <option value="other">Other</option>           
+    <option value="other">Other</option>
     </select>
-    </p>
-    <div class="edemo">
+  </p>
+  <div id="demos">
+  <div class="edemo">
 		<img class="userPic" src="images/userpic.jpg" alt="userpic" width="60" height="60" />
-		<h4>Username</h4>
-        <br/>
-		<p>Native Language</p>
-        <p>Practise Language</p>
-		<span class="time">Last Login Date</span>
+	    <h4><a href="#">Title</a></h4>
+		<p>username|publish date|language|participants(number)</p>
+        <p class="description"><a href="#" onClick="viewmore(this)">View Short Description</a></p>
+		<span class="time">Topic</span>
 	</div>
     <div class="demo">
 		<img class="userPic" src="images/userpic.jpg" alt="userpic" width="60" height="60" />
-		<h4>Username</h4>
-        <br/>
-		<p>Native Language</p>
-        <p>Practise Language</p>
-		<span class="time">Last Login Date</span>
+	    <h4><a href="#">Title</a></h4>
+		<p>username|publish date|language|participants(number)</p>
+        <p class="description"><a href="#" onClick="viewmore()">View Short Description</a></p>
+		<span class="time">Topic</span>
 	</div>
     <div class="edemo">
 		<img class="userPic" src="images/userpic.jpg" alt="userpic" width="60" height="60" />
-		<h4>Username</h4>
-        <br/>
-		<p>Native Language</p>
-        <p>Practise Language</p>
-		<span class="time">Last Login Date</span>
+	    <h4><a href="#">Title</a></h4>
+		<p>username|publish date|language|participants(number)</p>
+        <p class="description"><a href="#" onClick="viewmore()">View Short Description</a></p>
+		<span class="time">Topic</span>
 	</div>
     <div class="demo">
 		<img class="userPic" src="images/userpic.jpg" alt="userpic" width="60" height="60" />
-		<h4>Username</h4>
-        <br/>
-		<p>Native Language</p>
-        <p>Practise Language</p>
-		<span class="time">Last Login Date</span>
+	    <h4><a href="#">Title</a></h4>
+		<p>username|publish date|language|participants(number)</p>
+        <p class="description"><a href="#" onClick="viewmore()">View Short Description</a></p>
+		<span class="time">Topic</span>
 	</div>
     <div class="edemo">
 		<img class="userPic" src="images/userpic.jpg" alt="userpic" width="60" height="60" />
-		<h4>Username</h4>
-        <br/>
-		<p>Native Language</p>
-        <p>Practise Language</p>
-		<span class="time">Last Login Date</span>
+	    <h4><a href="#">Title</a></h4>
+		<p>username|publish date|language|participants(number)</p>
+        <p class="description"><a href="#" onClick="viewmore()">View Short Description</a></p>
+		<span class="time">Topic</span>
 	</div>  
     <div class="demo">
 		<img class="userPic" src="images/userpic.jpg" alt="userpic" width="60" height="60" />
-		<h4>Username</h4>
-        <br/>
-		<p>Native Language</p>
-        <p>Practise Language</p>
-		<span class="time">Last Login Date</span>
-	</div>  
+	    <h4><a href="#">Title</a></h4>
+		<p>username|publish date|language|participants(number)</p>
+        <p class="description"><a href="#" onClick="viewmore()">View Short Description</a></p>
+		<span class="time">Topic</span>
+	</div>
+    </div>  
   </div>   
   <div id="footer">
    <p>Copyright © 2016 Huizhi Zhong</p>

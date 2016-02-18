@@ -12,20 +12,20 @@
  <div id="header">
    <p><img id="titleimg" src="images/title.png" alt="title"/></p>
    <ul class="nav">
-    <li class="left"><a href="#">Home Page</a></li>
-    <li class="left"><a href="#">Find a match</a></li>
-    <li class="left"><a href="#">Forum</a></li>
-    <li class="right"><a href="#">Register</a></li>
-    <li class="right"><a href="#">Login</a></li>
+    <li class="left"><a href="index.html">Home Page</a></li>
+    <li class="left"><a href="match.html">Find a match</a></li>
+    <li class="left"><a href="forum.html">Forum</a></li>
+    <li class="right"><a href="registration.html">Register</a></li>
+    <li class="right"><a href="login.html">Login</a></li>
    </ul>
   </div>
   <div id="mainbody"> 
   <form id="register">
      <fieldset>
     <legend>Register</legend>   
-   <p><label for="username">Username*</label><input type="text" name="username" id="username" placeholder="Enter your username"/></p>
-   <p><label for="password">Password*</label><input type="password" name="password" id="password"/></p>
-   <p><label for="repassword">Confirm Password*</label><input type="password" name="repassword" id="repassword"/></p>
+   <p><label for="username">Username*</label><input type="text" name="username" id="username" placeholder="6-12 characters"/></p>
+   <p><label for="password">Password*</label><input type="password" name="password" id="password" placeholder="8-16 characters"/></p>
+   <p><label for="repassword">Confirm Password*</label><input type="password" name="repassword" id="repassword" placeholder="Please retype password"/></p>
    <p><label for="email">Email*</label><input type="email" name="email" id="email"/></p>
    <p><label for="fname">First Name*</label><input type="text" name="fname" id="fname"/></p>
    <p><label for="lname">Last Name*</label><input type="text" name="lname" id="lname"/></p>
@@ -63,7 +63,8 @@
     </select>
     <input type="text" id="pother" placeholder="Practise Language"/>
    </p>
-   <p><label for="topic">Interested Topic</label>
+   <p>
+   <label for="topic">Interested Topic</label>
     <select name="topic" id="topic" onChange="showOther(this)">
     <option value="animals" selected="selected">Animals</option>
     <option value ="beauty">Beauty</option>
@@ -75,7 +76,8 @@
     <option value ="sports">Sports</option>
     <option value ="technology">Technology</option>
     <option value ="television">Television</option>        
-    <option value="travel">Travel</option>          
+    <option value="travel">Travel</option>
+    <option value="other">Other</option>           
     </select>
     <input type="button" name="add" value="Add Another" onClick="addAnother()"/>(Maximum:3)    
    </p>

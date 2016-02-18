@@ -1,3 +1,22 @@
+window.onload = init;
+window.onsubmit = onSubmit;
+
+function onSubmit(){
+	var result = true;
+	result = checkUsername() && result;
+	result = checkPassword() && result;
+	result = checkCpassword() && result;
+	result = checkEmail() && result;
+	result = checkFirstName() && result;
+	result = checkLastName() && result;
+	result = checkGender() && result;
+	result = checkNlanguage() && result;
+	result = checkPlanguager() && result;
+	result = checkTopic() && result;
+	return result;
+}
+
+
 function showOther(){
 	var ntext=document.getElementById("nother");
 	var selectvalue=document.getElementById("language").value;
