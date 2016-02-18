@@ -1,22 +1,155 @@
 window.onload = init;
 window.onsubmit = onSubmit;
 
+function init() {
+	setControls();
+}
+
 function onSubmit(){
 	var result = true;
 	result = checkUsername() && result;
 	result = checkPassword() && result;
-	result = checkCpassword() && result;
 	result = checkEmail() && result;
 	result = checkFirstName() && result;
 	result = checkLastName() && result;
 	result = checkGender() && result;
-	result = checkNlanguage() && result;
-	result = checkPlanguager() && result;
-	result = checkTopic() && result;
 	return result;
 }
 
+function setControls() {
+	//Populating the array with objects 
+	//containing default texts and corresponding validation functions
+	var setupArray = [
+         {
+		 	defaultText: '6-12 characters',
+		    validate: checkUsername 
+		 },
+		 {
+		 	defaultText: '6-18 characters',
+			validate: checkPassword
+		 },
+		 {
+		 	defaultText: 'Enter valid email address',
+		    validate: checkEmail 
+		 },
+		 {
+		 	defaultText: 'Enter first name',
+			validate: checkFirstName
+		 },
+		 {
+			 defaultText: 'Enter last name',
+			 validate: checkLastName
+		 },
+	];
+	
+// Set required fields
+	var requiredFields = document.getElementsByClassName('required');
+	//Displaying default text in each field
+	for (var i=0; i<requiredFields.length; i++) {
+		requiredFields[i].value = setupArray[i].defaultText;
+		requiredFields[i].style.color = '#a8a8a8';
+		requiredFields[i].style.fontStyle = 'italic';
+		
+		// Assigning each object to the corresponding field 
+		requiredFields[i].setupObject = setupArray[i];
+		
+		requiredFields[i].onfocus = function() {
+			if (this.value === this.setupObject.defaultText) {
+				this.value = '';
+				this.style.color = '#000';
+				this.style.fontStyle = 'normal';
+			}
+		}; //end focus
+		requiredFields[i].onblur = function() {
+			if (this.value === '') {
+				this.value = this.setupObject.defaultText;
+				this.style.color = '#a8a8a8';
+				this.style.fontStyle = 'italic';
+			}
+			this.setupObject.validate();
+		}; //end blur
+	} //end for loop
+	
+} //end setup
 
+// Set focus on first field
+function selectFocus () {
+	var firstElem = document.getElementById('username');
+	firstElem.focus();
+} //end focus
+
+// Validation functions
+function checkUsername() {
+	var username = document.getElementById('username');
+	var errUName = document.getElementById('errUname');
+	if (username.value === '' || username.value === '6-12 characters') {
+		errUName.innerHTML='Please enter your user name';
+		errUName.style.display='block';
+		return false;
+	} else {
+		errUName.style.display='none';
+	}
+	return true;
+}
+
+function checkPassword() {
+	var password = document.getElementById('password');
+	var errPass = document.getElementById('errPass');
+	if (password.value === '' || password.value === '6-18 characters') {
+		errPass.innerHTML='Please enter your password';
+		errPass.style.display='block';
+		return false;
+	} else {
+		errPass.style.display='none';
+	}
+	return true;
+}
+
+function checkEmail(){
+	var email = document.getElementById('email');
+	var emailRegex = /[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}/;
+	var errEmail = document.getElementById('errEmail');
+	if (email.value === '' || email.value === 'Enter valid email address') {
+		errEmail.innerHTML='Please enter your email address';
+		errEmail.style.display='block';
+		return false;
+	} else if (!emailRegex.test(email.value)) {
+		errEmail.innerHTML='Please enter a valid email address';
+		errEmail.style.display='block';
+		return false;
+	} else {
+		errEmail.style.display='none';
+	}
+	return true;
+}
+
+function checkFirstName() {
+	var fName = document.getElementById('fname');
+	var errFName = document.getElementById('errFname');
+	if (fName.value === ''|| fName.value === 'Enter first name') {
+		errFName.innerHTML='Please enter your first name';
+		errFName.style.display='block';
+		return false;
+	} else {
+		errFName.style.display='none';
+	}
+	return true;
+}
+
+function checkLastName(){
+	var lName = document.getElementById('lname');
+	var errLName = document.getElementById('errLname');
+	if (lName.value === '' || lName.value === 'Enter last name') {
+		errLName.innerHTML='Please enter your last name';
+		errLName.style.display='block';
+		return false;
+	} else {
+		errLName.style.display='none';
+	}
+	return true;
+}
+
+//show other function
 function showOther(){
 	var ntext=document.getElementById("nother");
 	var selectvalue=document.getElementById("language").value;
