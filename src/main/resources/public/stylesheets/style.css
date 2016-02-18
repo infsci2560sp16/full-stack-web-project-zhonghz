@@ -1,49 +1,38 @@
 @charset "UTF-8";
 /* CSS Document */
 *{margin:0; padding:0;}
-body{background-color:#CCC;}
-
-#wrap{width:960px;margin:0 auto;}
-
-.description{font-size:14px;}
-
-.errText{text-indent:210px;line-height:10px;font-size:12px;color:#F00;font-style:italic;}
-
-#header{text-align:center;background-color:#DDD;width:100%;height:80px;margin:0 auto;}
-#titleimg{width:800px; height:80px;}
-ul{list-style:none;}
-.nav .left{float:left; margin-left:20px;}
-.nav .right{float:right;}
-
 a{color:#306;text-decoration:none;}
-.nav li a{text-decoration:none; display:block;height:30px;width:100px;line-height:30px; text-align:center; font-family:Arial, Helvetica, sans-serif;}
-.nav li a:hover{ background-color:#F60; color:#fff; border-radius:10px;}
-
-.filter{background-color:#F93;height:20px;padding:20px;}
-#mainbody{clear:both;width:100%;height:580px;text-align:center;background-image:url(../images/mainbackground.png);margin:0 auto; position:relative;}
-#main{background-image:url(../images/background.png);clear:both;width:100%;text-align:center;margin:0 auto;font-family:Arial, Helvetica, sans-serif;}
-#pannel{position:absolute; top:150px; left:200px; background-color:#F96; opacity:0.85; width:600px; padding-bottom:10px;}
-#join{background-color:#306; color:#FFF;border-radius:5px; border-color:#306; width:100px; font-size:16px;}
-
-#nother{display:none;}
-#pother{display:none;}
-#register fieldset{background:rgba(255, 153, 51, 0.9);width:500px; line-height:200%; text-indent:30px; font-family:Arial, Helvetica, sans-serif; text-align:left;position:absolute; top:50px; left:220px; border-radius:5px; border:solid 1px;}
-#register fieldset label{ width:180px; display:inline-block;}
-#rbutton{text-align:center;}
-
-#login{background:rgba(255, 153, 51, 0.9);width:250px;position:absolute; top:150px; left:360px; border-radius:10px;line-height:200%; padding:20px;}
-#login p{font-family:Arial, Helvetica, sans-serif; font-style:oblique;}
-
+body{background-color:#CCC;}
 .demo{width:80%;padding:20px;position: relative;background-color:#FC6;border: 1px solid #CCC; margin-left:100px;text-align:left;}
 .demo h5{ margin-bottom:5px}
 .demo p{line-height:150%}
 .demo .userPic{ float:left;margin:-20px 0 0 -100px }
 .demo .time{position:absolute; top:10px; right:20px; color:#999;}
-
+.description{font-size:14px;}
 .edemo{width:80%;padding:20px;position: relative;border: 1px dashed #CCC; margin-left:100px;text-align:left;}
 .edemo h5{ margin-bottom:5px}
 .edemo p{line-height:150%}
 .edemo .userPic{ float:left;margin:-20px 0 0 -100px }
 .edemo .time{position:absolute; top:10px; right:20px; color:#999;}
-
+.errText{text-indent:210px;line-height:10px;font-size:12px;color:#F00;font-style:italic;}
+.filter{background-color:#F93;height:20px;padding:20px;}
 #footer{background-color:#DDD;width:100%;height:80px;margin:0 auto; text-align:center; padding:20px 0; font-family:Georgia, "Times New Roman", Times, serif; font-size:18px;}
+#header{text-align:center;background-color:#DDD;width:100%;height:80px;margin:0 auto;}
+#join{background-color:#306;display:block;color:#FFF;border-radius:5px; border-color:#306; width:100px;margin:0 auto;font-size:16px;}
+#login{background:rgba(255, 153, 51, 0.9);width:250px;position:absolute; top:150px; left:360px; border-radius:10px;line-height:200%; padding:20px;}
+#login p{font-family:Arial, Helvetica, sans-serif; font-style:oblique;}
+#mainbody{clear:both;width:100%;height:580px;text-align:center;background-image:url(../images/mainbackground.png);margin:0 auto; position:relative;}
+#main{background-image:url(../images/background.png);clear:both;width:100%;text-align:center;margin:0 auto;font-family:Arial, Helvetica, sans-serif;}
+.nav .left{float:left; margin-left:20px;}
+.nav .right{float:right;}
+.nav li a{text-decoration:none; display:block;height:30px;width:100px;line-height:30px; text-align:center; font-family:Arial, Helvetica, sans-serif;}
+.nav li a:hover{ background-color:#F60; color:#fff; border-radius:10px;}
+#nother{display:none;}
+#pannel{position:absolute; top:150px; left:200px; background-color:#F96; opacity:0.85; width:600px; padding-bottom:10px;}
+#pother{display:none;}
+#register fieldset{background:rgba(255, 153, 51, 0.9);width:500px; line-height:200%; text-indent:30px; font-family:Arial, Helvetica, sans-serif; text-align:left;position:absolute; top:50px; left:220px; border-radius:5px; border:solid 1px;}
+#register fieldset label{ width:180px; display:inline-block;}
+#rbutton{text-align:center;}
+#titleimg{width:800px; height:80px;}
+ul{list-style:none;}
+#wrap{width:960px;margin:0 auto;}

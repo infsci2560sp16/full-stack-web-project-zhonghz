@@ -1,19 +1,7 @@
 window.onload = init;
-window.onsubmit = onSubmit;
 
 function init() {
 	setControls();
-}
-
-function onSubmit(){
-	var result = true;
-	result = checkUsername() && result;
-	result = checkPassword() && result;
-	result = checkEmail() && result;
-	result = checkFirstName() && result;
-	result = checkLastName() && result;
-	result = checkGender() && result;
-	return result;
 }
 
 function setControls() {
@@ -68,15 +56,8 @@ function setControls() {
 			}
 			this.setupObject.validate();
 		}; //end blur
-	} //end for loop
-	
+	} //end for loop	
 } //end setup
-
-// Set focus on first field
-function selectFocus () {
-	var firstElem = document.getElementById('username');
-	firstElem.focus();
-} //end focus
 
 // Validation functions
 function checkUsername() {
@@ -86,10 +67,15 @@ function checkUsername() {
 		errUName.innerHTML='Please enter your user name';
 		errUName.style.display='block';
 		return false;
-	} else {
+	} else if(username.value.length<6||username.value.length>12){
+		errUName.innerHTML='Please enter a valid user name';
+		errUName.style.display='block';
+		return false;
+		}
+	else {
 		errUName.style.display='none';
+		return true;
 	}
-	return true;
 }
 
 function checkPassword() {
@@ -99,10 +85,16 @@ function checkPassword() {
 		errPass.innerHTML='Please enter your password';
 		errPass.style.display='block';
 		return false;
-	} else {
+	} else if(password.value.length<6||password.value.length>18){
+		errPass.innerHTML='Please enter a valid password';
+		errPass.style.display='block';
+		return false;
+		}
+	else {
 		errPass.style.display='none';
+		return true;
 	}
-	return true;
+	
 }
 
 function checkEmail(){
@@ -119,8 +111,9 @@ function checkEmail(){
 		return false;
 	} else {
 		errEmail.style.display='none';
+		return true;
 	}
-	return true;
+	
 }
 
 function checkFirstName() {
@@ -132,8 +125,9 @@ function checkFirstName() {
 		return false;
 	} else {
 		errFName.style.display='none';
+		return true;
 	}
-	return true;
+	
 }
 
 function checkLastName(){
@@ -145,8 +139,25 @@ function checkLastName(){
 		return false;
 	} else {
 		errLName.style.display='none';
+		return true;
 	}
-	return true;
+	
+}
+
+function submitTest(){
+	var result = true;
+	result = checkUsername() && result;
+	result = checkPassword() && result;
+	result = checkEmail() && result;
+	result = checkFirstName() && result;
+	result = checkLastName() && result;
+	result = checkGender() && result;
+	if(result)
+	{return true;}
+	else{
+		alert("Please check the errors.");
+		return flase;		
+	}
 }
 
 //show other function
