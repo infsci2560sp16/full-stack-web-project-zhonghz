@@ -145,19 +145,18 @@ function checkLastName(){
 }
 
 function submitTest(){
-	var result = true;
-	result = checkUsername() && result;
-	result = checkPassword() && result;
-	result = checkEmail() && result;
-	result = checkFirstName() && result;
-	result = checkLastName() && result;
-	result = checkGender() && result;
-	if(result)
-	{return true;}
-	else{
-		alert("Please check the errors.");
-		return flase;		
-	}
+		  var result = true;
+			result = checkUsername() && result;
+			result = checkPassword() && result;
+			result = checkEmail() && result;
+			result = checkFirstName() && result;
+			result = checkLastName() && result;
+			if(!result){
+				alert("Please fill in all information");				
+			}else{
+				alert("Successfully registered");	
+				}
+			return result;
 }
 
 //show other function
