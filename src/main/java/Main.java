@@ -71,7 +71,7 @@ public class Main {
     //   return data;
     // }, gson::toJson);
     Gson gson = new Gson();
-    
+
     get("api/find", (req, res) -> {
       Connection connection = null;
       Map<String, Object> attributes = new HashMap<>();
@@ -86,9 +86,11 @@ public class Main {
         Map<String, Object> data = new HashMap<>();
         //ArrayList<String> output = new ArrayList<String>();
         while (rs.next()) {
-          data.put("username", rs.getString("username"));
-          data.put("nlanguage", rs.getString("nlanguage"));
-          data.put("planguage", rs.getString("planguage"));
+          Map<String, Object> member = new HashMap<>();
+          member.put("username", rs.getString("username"));
+          member.put("nlanguage", rs.getString("nlanguage"));
+          member.put("planguage", rs.getString("planguage"));
+          data.put(rs.getString("username"), member);
         }
         return data;
         //attributes.put("results", output);
