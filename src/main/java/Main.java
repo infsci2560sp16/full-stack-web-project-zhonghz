@@ -51,13 +51,6 @@ public class Main {
             return new ModelAndView(attributes, "index.ftl");
           } , new FreeMarkerEngine());
 
-      // get("/register", (req, res) -> {
-      //   Map<String, Object> data = new HashMap<>();
-      //   data.put("", "json");
-      //   data.put("status", "live");
-      //   return data;
-      // }, gson::toJson);
-
     //get("/", (request, response) -> {
     //        Map<String, Object> attributes = new HashMap<>();
     //        attributes.put("message", "Hello World!");
@@ -65,41 +58,7 @@ public class Main {
     //        return new ModelAndView(attributes, "index.ftl");
     //    }, new FreeMarkerEngine());
 
-    // get("/api/", (req, res) -> {
-    //
-    //   Map<String, Object> data = new HashMap<>();
-    //   data.put("", "json");
-    //   data.put("status", "live");
-    //   return data;
-    // }, gson::toJson);
     Gson gson = new Gson();
-
-    // get("api/find", (req, res) -> {
-    //   List<Object> data = new ArrayList<>();
-    //   Connection connection = null;
-    //   //Map<String, Object> data = new HashMap<>();
-    //   try {
-    //     connection = DatabaseUrl.extract().getConnection();
-    //     Statement stmt = connection.createStatement();
-    //     // stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-    //     // stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-    //     ResultSet rs = stmt.executeQuery("SELECT username, nlanguage, planguage FROM users");
-    //
-    //     while (rs.next()) {
-    //       Map<String, Object> member = new HashMap<>();
-    //       member.put("username", rs.getString("username"));
-    //       member.put("nlanguage", rs.getString("nlanguage"));
-    //       member.put("planguage", rs.getString("planguage"));
-    //       //data.put(rs.getString("username"), member);
-    //       data.add(member);
-    //     }
-    //     return data;
-    //   } catch (Exception e) {
-    //     data.add("message", "There was an error: " + e);
-    //   } finally {
-    //     if (connection != null) try{connection.close();} catch(SQLException e){}
-    //   }
-    // }, gson::toJson);
 
     get("api/find", (req, res) -> {
       Connection connection = null;
