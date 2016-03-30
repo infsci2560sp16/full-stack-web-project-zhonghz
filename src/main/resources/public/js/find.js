@@ -1,8 +1,8 @@
 $(function () {
   $.ajax({
-    url: "/api/find",
-    type: "GET",
-    dataType: "json",
+    url: '/api/find',
+    type: 'GET',
+    dataType: 'json',
     success: function (result) {
       var member = JSON.parse(result);
       for (var i = 0; i < member.length; i++) {
