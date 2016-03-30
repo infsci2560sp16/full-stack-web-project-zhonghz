@@ -3,7 +3,9 @@ $(function () {
     url: "/api/find",
     success: function (result) {
       var member = JSON.parse(result);
-      console.log(data);
+      console.log(result);
+      console.log(member);
+      console.log(member[0].username);
       for (var i = 0; i < member.length; i++) {
         if (i%2 !== 0) {
           // $odddiv = $('<div class="edemo"></div>');
