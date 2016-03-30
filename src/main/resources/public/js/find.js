@@ -3,9 +3,9 @@ $(function () {
     url: "/api/find",
     success: function (result) {
       var member = JSON.parse(result);
-      console.log(result);
-      console.log(member);
-      console.log(member[0].username);
+      // console.log(result);
+      // console.log(member);
+      // console.log(member[0].username);
       for (var i = 0; i < member.length; i++) {
         if (i%2 !== 0) {
           // $odddiv = $('<div class="edemo"></div>');
@@ -16,13 +16,13 @@ $(function () {
           // $($odddiv).append("<p>member[i].nlanguage</p>");
           // $($odddiv).append("<p>member[i].planguage</p>");
           // $($odddiv).append("<span class='time'>Last Login Date</span>");
-          $("div#members").html('<div class="edemo">'+
+          $("div#members").append('<div class="edemo">'+
                                 '<img class="userPic" src="images/userpic.jpg" alt="userpic" width="60" height="60" />'+
                                 '<h4>Username'+member[i].username+'</h4>'+
                                 '<br/>'+'<p>Native Language'+member[i].nlanguage+'</p>'+
                                 '<p>Practise Language'+member[i].planguage+'</p>'+'<span class="time">Last Login Date</span>'+'</div>');
         } else {
-          $("div#members").html('<div class="demo">'+
+          $("div#members").append('<div class="demo">'+
                                 '<img class="userPic" src="images/userpic.jpg" alt="userpic" width="60" height="60" />'+
                                 '<h4>Username'+member[i].username+'</h4>'+
                                 '<br/>'+'<p>Native Language'+member[i].nlanguage+'</p>'+
