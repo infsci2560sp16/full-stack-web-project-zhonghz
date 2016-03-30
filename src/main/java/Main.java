@@ -1,8 +1,9 @@
 import com.google.gson.Gson;
 import java.sql.*;
-import java.util.HashMap;
-import java.util.ArrayList;
-import java.util.Map;
+import java.util.*;
+// import java.util.HashMap;
+// import java.util.ArrayList;
+// import java.util.Map;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -13,6 +14,7 @@ import spark.ModelAndView;
 import static spark.Spark.get;
 
 import com.heroku.sdk.jdbc.DatabaseUrl;
+import spark.Request;
 
 public class Main {
 
@@ -72,6 +74,33 @@ public class Main {
     // }, gson::toJson);
     Gson gson = new Gson();
 
+    // get("api/find", (req, res) -> {
+    //   List<Object> data = new ArrayList<>();
+    //   Connection connection = null;
+    //   //Map<String, Object> data = new HashMap<>();
+    //   try {
+    //     connection = DatabaseUrl.extract().getConnection();
+    //     Statement stmt = connection.createStatement();
+    //     // stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
+    //     // stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
+    //     ResultSet rs = stmt.executeQuery("SELECT username, nlanguage, planguage FROM users");
+    //
+    //     while (rs.next()) {
+    //       Map<String, Object> member = new HashMap<>();
+    //       member.put("username", rs.getString("username"));
+    //       member.put("nlanguage", rs.getString("nlanguage"));
+    //       member.put("planguage", rs.getString("planguage"));
+    //       //data.put(rs.getString("username"), member);
+    //       data.add(member);
+    //     }
+    //     return data;
+    //   } catch (Exception e) {
+    //     data.add("message", "There was an error: " + e);
+    //   } finally {
+    //     if (connection != null) try{connection.close();} catch(SQLException e){}
+    //   }
+    // }, gson::toJson);
+
     get("api/find", (req, res) -> {
       Connection connection = null;
       Map<String, Object> attributes = new HashMap<>();
@@ -83,14 +112,16 @@ public class Main {
         // stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
         ResultSet rs = stmt.executeQuery("SELECT username, nlanguage, planguage FROM users");
 
-        Map<String, Object> data = new HashMap<>();
+        //Map<String, Object> data = new HashMap<>();
         //ArrayList<String> output = new ArrayList<String>();
+        List<Object> data = new ArrayList<>();
         while (rs.next()) {
           Map<String, Object> member = new HashMap<>();
           member.put("username", rs.getString("username"));
           member.put("nlanguage", rs.getString("nlanguage"));
           member.put("planguage", rs.getString("planguage"));
-          data.put(rs.getString("username"), member);
+          //data.put(rs.getString("username"), member);
+          data.add(member);
         }
         return data;
         //attributes.put("results", output);
@@ -102,6 +133,7 @@ public class Main {
         if (connection != null) try{connection.close();} catch(SQLException e){}
       }
     }, gson::toJson);
+
 
     get("/db", (req, res) -> {
       Connection connection = null;

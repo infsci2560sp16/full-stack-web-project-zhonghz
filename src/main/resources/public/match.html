@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Find A Match</title>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script type="text/javascript" src="js/find.js"></script>
 <link href="stylesheets/style.css" rel="stylesheet" type="text/css"/>
 </head>
 
@@ -17,7 +19,8 @@
     <li class="right"><a href="registration.html">Register</a></li>
     <li class="right"><a href="login.html">Login</a></li>
    </ul>
-  </div>
+ </div>
+
   <div id="main">
   <p class="filter">
   <label for="slanguage">Native Language</label>
@@ -26,13 +29,13 @@
     <option value="english">English</option>
     <option value="french">French</option>
     <option value="german">German</option>
-    <option value="hindi">Hindi</option>    
+    <option value="hindi">Hindi</option>
     <option value ="japanese">Japanese</option>
-    <option value ="korean">Korean</option>    
+    <option value ="korean">Korean</option>
     <option value ="portuguese">Portuguese</option>
     <option value="russian">Russian</option>
     <option value="spanish">Spanish</option>
-    <option value="other">Other</option>    
+    <option value="other">Other</option>
     </select>
     <label for="ulanguage">&nbsp;&nbsp;Practise Language</label>
     <select id="ulanguage">
@@ -40,17 +43,17 @@
     <option value="english">English</option>
     <option value="french">French</option>
     <option value="german">German</option>
-    <option value="hindi">Hindi</option>    
+    <option value="hindi">Hindi</option>
     <option value ="japanese">Japanese</option>
-    <option value ="korean">Korean</option>    
+    <option value ="korean">Korean</option>
     <option value ="portuguese">Portuguese</option>
     <option value="russian">Russian</option>
-    <option value="other">Other</option>    
+    <option value="other">Other</option>
     </select>
     <label for="gender">&nbsp;Gender</label>
     <select name="gender" id="gender">
     <option value="male">Male</option>
-    <option value="female">Female</option>   
+    <option value="female">Female</option>
     </select>
     <label for="topic">&nbsp;Interested Topic</label>
     <select name="topic" id="topic">
@@ -58,20 +61,22 @@
     <option value ="beauty">Beauty</option>
     <option value="books">Books</option>
     <option value="cooking">Cooking</option>
-    <option value="culture">Culture</option> 
+    <option value="culture">Culture</option>
     <option value="movies">Movies</option>
-    <option value="music">Music</option>    
+    <option value="music">Music</option>
     <option value ="sports">Sports</option>
     <option value ="technology">Technology</option>
-    <option value ="television">Television</option>        
+    <option value ="television">Television</option>
     <option value="travel">Travel</option>
-    <option value="other">Other</option>           
+    <option value="other">Other</option>
     </select>
     <br/>
     <input type="submit" value="Search"/>
     </p>
-    <p></p>
-    <div class="edemo">
+
+    <div id="members">
+    </div>
+    <!-- <div class="edemo">
 		<img class="userPic" src="images/userpic.jpg" alt="userpic" width="60" height="60" />
 		<h4>Username</h4>
         <br/>
@@ -110,7 +115,7 @@
 		<p>Native Language</p>
         <p>Practise Language</p>
 		<span class="time">Last Login Date</span>
-	</div>  
+	</div>
     <div class="demo">
 		<img class="userPic" src="images/userpic.jpg" alt="userpic" width="60" height="60" />
 		<h4>Username</h4>
@@ -118,11 +123,13 @@
 		<p>Native Language</p>
         <p>Practise Language</p>
 		<span class="time">Last Login Date</span>
-	</div>  
-  </div>   
+	</div>   -->
+  </div>
+
   <div id="footer">
    <p>Copyright © 2016 Huizhi Zhong</p>
   </div>
+
 </div>
 </body>
 </html>
