@@ -123,7 +123,7 @@ public class Main {
           String planguage = obj.getString("planguage");
           String topic = obj.getString("topic");
 
-          String sql = "INSERT INTO VALUES ('"+ username + "','" + password + "','" + email + "','" + fname + "','"+ lname + "','" + gender + "','" + language + "','" + planguage + "','" + topic + "')";
+          String sql = "INSERT INTO users VALUES ('"+ username + "','" + password + "','" + email + "','" + fname + "','"+ lname + "','" + gender + "','" + language + "','" + planguage + "','" + topic + "')";
 
           connection = DatabaseUrl.extract().getConnection();
           Statement stmt = connection.createStatement();
