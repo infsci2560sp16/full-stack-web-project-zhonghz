@@ -4,9 +4,6 @@ import java.sql.*;
 import java.util.*;
 import java.util.Date;
 import java.text.SimpleDateFormat;
-// import java.util.HashMap;
-// import java.util.ArrayList;
-// import java.util.Map;
 
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -18,6 +15,15 @@ import static spark.Spark.get;
 
 import com.heroku.sdk.jdbc.DatabaseUrl;
 import spark.Request;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Main {
 
@@ -143,6 +149,61 @@ public class Main {
           if (connection != null) try{connection.close();} catch(SQLException e){}
         }
       });
+
+      get("/api/forum", (req, res) -> {
+          Connection connection = null;
+          res.type("application/xml"); //Return as XML
+
+          Map<String, Object> attributes = new HashMap<>();
+          try {
+              //Connect to Database and execute SQL Query
+              connection = DatabaseUrl.extract().getConnection();
+              Statement stmt = connection.createStatement();
+              ResultSet rs = stmt.executeQuery("SELECT title,username,threads.planguage AS language,threads.topic AS topic,description FROM users,threads WHERE users.email=threads.email");
+
+              //Get column count of resultset
+              ResultSetMetaData rsmd = rs.getMetaData();
+              int colCount = rsmd.getColumnCount();
+
+              //create new document
+              DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+              DocumentBuilder builder = factory.newDocumentBuilder();
+              Document doc = builder.newDocument();
+
+              //create new root element for sql results
+              Element results = doc.createElement("forum");
+              doc.appendChild(results);
+
+              //create each row as <device> and make column name tags as element
+              while (rs.next()) {
+                  Element row = doc.createElement("thread");
+                  results.appendChild(row);
+                      for (int ii = 1; ii <= colCount; ii++) {
+                          String columnName = rsmd.getColumnName(ii);
+                          Object value = rs.getObject(ii);
+                          Element node = doc.createElement(columnName);
+                          node.appendChild(doc.createTextNode(value.toString()));
+                          row.appendChild(node);
+                      }//end for
+              }//end while
+
+              //Add name space to root element inventory
+              Element documentElement = doc.getDocumentElement();
+              documentElement.setAttribute("xmlns", "https://still-brushlands-7620.herokuapp.com/api/forum");
+              documentElement.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+              documentElement.setAttribute("xsi:schemaLocation", "forum.xsd");
+
+              //Finish formatting as XML and then return XML
+              // return (CreateXml.getDocumentAsXml(doc));
+              return(doc);
+
+          } catch (Exception e) {
+              attributes.put("message", "There was an error: " + e);
+              return attributes;
+          } finally {
+              if (connection != null) try{connection.close();} catch(SQLException e){}
+          }
+        });//End api/forum
 
 
 

@@ -1,4 +1,27 @@
+function getDataXML() {
+    $.ajax({
+      url: "/api/forum",
+    	type: "GET",
+    	dataType: 'XML',
+      success : handleDataXML
+    });
+}
 
+function handleDataXML(data) {
+    $(data).find('thread').each(function(){
+    var title = $(this).find('title').text();
+    var username = $(this).find('username').text();
+    var language = $(this).find('language').text();
+    var topic = $(this).find('topic').text();
+    var description = $(this).find('description').text();
+    $("div#demos").append('<div class="edemo" id="demo1">'+
+													'<img class="userPic" src="images/userpic.jpg" alt="userpic" width="60" height="60" />'+
+		    									'<h4>'+'<a href="#">'+title+'</a></h4>'+
+													'<p>'+username+'|'+language+'</p>'+
+	        								'<p class="description">'+description+'</p>'+
+													'<span class="time">'+topic+'</span>'+'</div>');
+   });
+}
 
 function viewmore(obj){
 	var view=document.getElementById("view1");
