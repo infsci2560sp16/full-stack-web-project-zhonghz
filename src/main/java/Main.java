@@ -129,9 +129,14 @@ public class Main {
           Statement stmt = connection.createStatement();
           stmt.executeUpdate(sql);
 
-          // ResultSet rs = stmt.executeQuery("SELECT * FROM users where make ='" + username + "'");
+          ResultSet rs = stmt.executeQuery("SELECT * FROM users where username ='" + username + "'");
+          Map<String, Object> currentuser = new HashMap<>();
 
-         return req.body();
+					currentuser.put("username", rs.getString("username"));
+					currentuser.put("email", rs.getString("email"));
+
+          return currentuser;
+        //  return req.body();
         } catch (Exception e) {
           return e.getMessage();
         } finally {

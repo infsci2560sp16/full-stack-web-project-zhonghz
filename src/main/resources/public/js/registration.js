@@ -23,8 +23,9 @@ $(function(){
                   datatype: "json",
                   data: obj,
                   success: function(data) {
-                      alert("Register successfully.");
+                      alert("Welcome! You have registered successfully!");
                       window.location.href='/index.html';
+											console.log(data);
                   }
               });
                     return false;
