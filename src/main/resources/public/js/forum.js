@@ -1,26 +1,22 @@
-function getDataXML() {
-    $.ajax({
-      url: "/api/forum",
-    	type: "GET",
-    	dataType: 'XML',
-      success : handleDataXML
-    });
-}
-
-function handleDataXML(data) {
-    $(data).find('thread').each(function(){
-    var title = $(this).find('title').text();
-    var username = $(this).find('username').text();
-    var language = $(this).find('language').text();
-    var topic = $(this).find('topic').text();
-    var description = $(this).find('description').text();
-    $("div#demos").append('<div class="edemo" id="demo1">'+
-													'<img class="userPic" src="images/userpic.jpg" alt="userpic" width="60" height="60" />'+
-		    									'<h4>'+'<a href="#">'+title+'</a></h4>'+
-													'<p>'+username+'|'+language+'</p>'+
-	        								'<p class="description">'+description+'</p>'+
-													'<span class="time">'+topic+'</span>'+'</div>');
-   });
+//XML GET
+function browseThread () {
+	$.ajax({
+		url : "/api/forum",
+		type : "get",
+		success : function(result) {
+			$("#inv").html("");
+			console.log(result);
+			threads = result.getElementsByTagName("thread");
+			for ( var i = 0; i < threads.length; i++) {
+        $("div#demos").append('<div class="edemo" id="demo1">'+
+        													'<img class="userPic" src="images/userpic.jpg" alt="userpic" width="60" height="60" />'+
+        		    									'<h4>'+'<a href="#">'+threads[i].childNodes[0].firstChild.nodeValue+'</a></h4>'+
+        													'<p>'+username+'|'+threads[i].childNodes[2].firstChild.nodeValue+'</p>'+
+        	        								'<p class="description">'+threads[i].childNodes[4].firstChild.nodeValue+'</p>'+
+        													'<span class="time">'+threads[i].childNodes[3].firstChild.nodeValue+'</span>'+'</div>');
+			}
+		}
+	});
 }
 
 function viewmore(obj){
