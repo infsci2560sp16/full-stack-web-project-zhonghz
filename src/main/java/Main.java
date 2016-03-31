@@ -165,7 +165,7 @@ public class Main {
 
 
               String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-              xml += "<forum xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:noNamespace SchemaLocation=\"forum.xsd\">";
+              xml += "<forum xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:SchemaLocation=\"forum.xsd\">";
               while (rs.next()) {
               xml += "<thread>";
 						  xml += "<title>"+rs.getString("title")+"</title>";
