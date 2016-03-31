@@ -1,6 +1,8 @@
 import com.google.gson.Gson;
 import java.sql.*;
 import java.util.*;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 // import java.util.HashMap;
 // import java.util.ArrayList;
 // import java.util.Map;
@@ -27,7 +29,9 @@ public class Main {
 
     get("/hello", (req, res) -> "Hello World");
 
-    get("/test", (req, res) -> {
+    get("/index", (request, response) -> {
+            Map<String, Object> attributes = new HashMap<>();
+
             ArrayList<String> oddtopics = new ArrayList<String>();
             oddtopics.add("Animal");
             oddtopics.add("Beauty");
@@ -43,13 +47,19 @@ public class Main {
             weektopics.add("Sports");
             weektopics.add("Travel");
 
-            Map<String, Object> attributes = new HashMap<>();
+            SimpleDateFormat formatter = new SimpleDateFormat("EEEE");
+            String dayOfWeek = formatter.format(new Date());
+
             attributes.put("oddtopics", oddtopics);
             attributes.put("eventopics", eventopics);
             attributes.put("weektopics", weektopics);
+            attributes.put("dayOfWeek", dayOfWeek);
+
 
             return new ModelAndView(attributes, "index.ftl");
           } , new FreeMarkerEngine());
+
+
 
     //get("/", (request, response) -> {
     //        Map<String, Object> attributes = new HashMap<>();

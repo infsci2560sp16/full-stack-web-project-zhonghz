@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Homepage</title>
@@ -24,28 +24,22 @@
    <img src="images/looking.png" alt="looking for a language partner"/>
    <p><a id="join" href="registration.html">Join Us!</a></p>
 
-   <h3><a href="#"><br/>Recommended Topics for Today</a></h3>
-   <#assign aDateTime = .now>
-   <#assign day = aDateTime?string["EEEE"]>
-   <#if day == "Tuesday"||day == "Thursday">
-   <p>hello</p>
-   <!-- <#list attributes as topic>
-   <li>${topic.eventopics}</li>
-   </#list> -->
-   <!-- <li>${eventopics}</li> -->
-   <#elseif day == "Monday"||day == "Wesnesday"||day == "Friday">
-   <p>hello</p>
-   <!-- <li>${oddtopics}</li> -->
-   <!-- <#list attributes as topic>
-   <li>${topic.oddtopics}</li>
-   </#list> -->
-   <#else day == "Saturday"||day == "Sunday">
-   <p>hello</p>
-   <!-- <li>${weektopics}</li> -->
-   <!-- <#list attributes as topic>
-   <li>${topic.weektopics}</li>
-   </#list> -->
+   <h3><a href="#"><br/>Recommended Topics for ${dayOfWeek}</a></h3>
+
+   <#if dayOfWeek == "Tuesday"|| dayOfWeek == "Thursday">
+   <#list 0..oddtopics?size-1 as i>
+   <h4>${eventopics[i]}</h4>
+   </#list>
+   <#elseif dayOfWeek == "Monday"|| dayOfWeek == "Wesnesday"||day == "Friday">
+   <#list 0..oddtopics?size-1 as i>
+   <h4>${oddtopics[i]}</h4>
+   </#list>
+   <#else dayOfWeek == "Saturday"|| dayOfWeek == "Sunday">
+   <#list 0..oddtopics?size-1 as i>
+   <h4>${weektopics[i]}</h4>
+   </#list>
    </#if>
+   
    </div>
   </div>
   <div id="footer">
