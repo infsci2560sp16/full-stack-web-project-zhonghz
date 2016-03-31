@@ -160,42 +160,56 @@ public class Main {
               connection = DatabaseUrl.extract().getConnection();
               Statement stmt = connection.createStatement();
               ResultSet rs = stmt.executeQuery("SELECT title,username,threads.planguage AS language,threads.topic AS topic,description FROM users,threads WHERE users.email=threads.email");
-
+              String title = rs.getString("title");
+              String username = rs.getString("username");
+              String language = rs.getString("language");
+              String topic = rs.getString("topic");
+              String description = rs.getString("description");
+              String xml =    "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+                              "<thread>" +
+                                "<title>"+title+"</title>" +
+                                "<username>"+username+"</username>" +
+                                "<language>"+language+"</language>" +
+                                "<topic>"+topic+"</topic>" +
+                                "<description>"+topic+"</description>" +
+                              "</thread>";
+            res.type("text/xml");
+            return xml;
               //Get column count of resultset
-              ResultSetMetaData rsmd = rs.getMetaData();
-              int colCount = rsmd.getColumnCount();
-
-              //create new document
-              DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-              DocumentBuilder builder = factory.newDocumentBuilder();
-              Document doc = builder.newDocument();
-
-              //create new root element for sql results
-              Element results = doc.createElement("forum");
-              doc.appendChild(results);
-
-              //create each row as <device> and make column name tags as element
-              while (rs.next()) {
-                  Element row = doc.createElement("thread");
-                  results.appendChild(row);
-                      for (int ii = 1; ii <= colCount; ii++) {
-                          String columnName = rsmd.getColumnName(ii);
-                          Object value = rs.getObject(ii);
-                          Element node = doc.createElement(columnName);
-                          node.appendChild(doc.createTextNode(value.toString()));
-                          row.appendChild(node);
-                      }//end for
-              }//end while
-
-              //Add name space to root element inventory
-              Element documentElement = doc.getDocumentElement();
-              documentElement.setAttribute("xmlns", "https://still-brushlands-7620.herokuapp.com/api/forum");
-              documentElement.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
-              documentElement.setAttribute("xsi:schemaLocation", "forum.xsd");
-
-              //Finish formatting as XML and then return XML
+              // ResultSetMetaData rsmd = rs.getMetaData();
+              // int colCount = rsmd.getColumnCount();
+              //
+              // //create new document
+              // DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+              // DocumentBuilder builder = factory.newDocumentBuilder();
+              // Document doc = builder.newDocument();
+              //
+              // //create new root element for sql results
+              // Element results = doc.createElement("forum");
+              // doc.appendChild(results);
+              //
+              // //create each row as <device> and make column name tags as element
+              // while (rs.next()) {
+              //     Element row = doc.createElement("thread");
+              //     results.appendChild(row);
+              //         for (int ii = 1; ii <= colCount; ii++) {
+              //             String columnName = rsmd.getColumnName(ii);
+              //             Object value = rs.getObject(ii);
+              //             Element node = doc.createElement(columnName);
+              //             node.appendChild(doc.createTextNode(value.toString()));
+              //             row.appendChild(node);
+              //         }//end for
+              // }//end while
+              //
+              // //Add name space to root element forum
+              // Element documentElement = doc.getDocumentElement();
+              // documentElement.setAttribute("xmlns", "https://still-brushlands-7620.herokuapp.com/api/forum");
+              // documentElement.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+              // documentElement.setAttribute("xsi:schemaLocation", "forum.xsd");
+              //
+              // //Finish formatting as XML and then return XML
               // return (CreateXml.getDocumentAsXml(doc));
-              return(doc);
+              // // return(doc);
 
           } catch (Exception e) {
               attributes.put("message", "There was an error: " + e);
