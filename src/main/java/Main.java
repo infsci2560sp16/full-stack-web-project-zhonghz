@@ -150,7 +150,7 @@ public class Main {
         }
       });
 
-      get("/api/forum", (req, res) -> {
+      get("api/forum", (req, res) -> {
           Connection connection = null;
           res.type("application/xml"); //Return as XML
 
