@@ -1,4 +1,5 @@
 import com.google.gson.Gson;
+import org.json.JSONObject;
 import java.sql.*;
 import java.util.*;
 import java.util.Date;
@@ -29,6 +30,7 @@ public class Main {
 
     get("/hello", (req, res) -> "Hello World");
 
+    //ftl
     get("/index", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
 
@@ -69,7 +71,7 @@ public class Main {
     //    }, new FreeMarkerEngine());
 
     Gson gson = new Gson();
-
+    //GET JSON
     get("api/find", (req, res) -> {
       Connection connection = null;
       Map<String, Object> attributes = new HashMap<>();
@@ -102,6 +104,44 @@ public class Main {
         if (connection != null) try{connection.close();} catch(SQLException e){}
       }
     }, gson::toJson);
+
+    //POST JSON
+    post("api/register", (req, res) -> {
+          Connection connection = null;
+          //Testing
+          System.out.println(req.body());
+        try {
+          connection = DatabaseUrl.extract().getConnection();
+          JSONObject obj = new JSONObject(req.body());
+          String username = obj.getString("username");
+          String password = obj.getString("password");
+          String email = obj.getString("email");
+          String fname = obj.getString("fname");
+          String lname = obj.getString("lname");
+          String gender = obj.getString("gender");
+          String language = obj.getString("language");
+          String planguage = obj.getString("planguage");
+          String topic = obj.getString("topic");
+
+          String sql = "INSERT INTO VALUES ('"+ username + "','" + password + "','" + email + "','" + fname + "','"+ lname + "','" + gender + "','" + language + "','" + planguage + "')";
+
+          connection = DatabaseUrl.extract().getConnection();
+          Statement stmt = connection.createStatement();
+          stmt.executeUpdate(sql);
+
+           //**Testing**
+         System.out.println(username);
+         System.out.println(email);
+         System.out.println(password);
+
+         return req.body();
+        } catch (Exception e) {
+          return e.getMessage();
+        } finally {
+
+        }
+      });
+
 
 
     get("/db", (req, res) -> {

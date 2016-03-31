@@ -1,16 +1,48 @@
 window.onload = init;
 
+$(function(){
+        $("#submit").click(function(){
+      // '{"username":"ting","email":"tingli1101376@gmail.com","password":"123",cpassword:"123"}',
+        var username = $("#username").val();
+				var password = $("#password").val();
+        var email = $("#email").val();
+        var fname = $("#fname").val();
+        var lname =$("#lname").val();
+				var gender =$('input:radio[name="gender"]:checked').val();
+				var language =$("#language").val();
+				var planguage =$("#planguage").val();
+				var topic =$("#topic").val();
+				// var send = JSON.stringify({"username":username,"email":email,"password":password,"cpassword":password});
+        var obj = JSON.stringify({"username":username,"password":password,
+																	"email":email,"fname":fname,"lname":lname,
+																	"gender":gender,"language":language,"planguage":planguage,"topic":topic});
+              $.ajax({
+                  contentType:'application/json',
+                  url: '/api/register',
+                  type: "POST",
+                  datatype: "json",
+                  data: obj,
+                  success: function(data) {
+                      alert("Register successfully.");
+                      window.location.href='/index.html';
+                  }
+              });
+                    return false;
+          });
+   });
+
+
 function init() {
 	setControls();
 }
 
 function setControls() {
-	//Populating the array with objects 
+	//Populating the array with objects
 	//containing default texts and corresponding validation functions
 	var setupArray = [
          {
 		 	defaultText: '6-12 characters',
-		    validate: checkUsername 
+		    validate: checkUsername
 		 },
 		 {
 		 	defaultText: '6-18 characters',
@@ -18,7 +50,7 @@ function setControls() {
 		 },
 		 {
 		 	defaultText: 'Enter valid email address',
-		    validate: checkEmail 
+		    validate: checkEmail
 		 },
 		 {
 		 	defaultText: 'Enter first name',
@@ -29,7 +61,7 @@ function setControls() {
 			 validate: checkLastName
 		 },
 	];
-	
+
 // Set required fields
 	var requiredFields = document.getElementsByClassName('required');
 	//Displaying default text in each field
@@ -37,10 +69,10 @@ function setControls() {
 		requiredFields[i].value = setupArray[i].defaultText;
 		requiredFields[i].style.color = '#a8a8a8';
 		requiredFields[i].style.fontStyle = 'italic';
-		
-		// Assigning each object to the corresponding field 
+
+		// Assigning each object to the corresponding field
 		requiredFields[i].setupObject = setupArray[i];
-		
+
 		requiredFields[i].onfocus = function() {
 			if (this.value === this.setupObject.defaultText) {
 				this.value = '';
@@ -56,7 +88,7 @@ function setControls() {
 			}
 			this.setupObject.validate();
 		}; //end blur
-	} //end for loop	
+	} //end for loop
 } //end setup
 
 // Validation functions
@@ -94,7 +126,7 @@ function checkPassword() {
 		errPass.style.display='none';
 		return true;
 	}
-	
+
 }
 
 function checkEmail(){
@@ -113,7 +145,7 @@ function checkEmail(){
 		errEmail.style.display='none';
 		return true;
 	}
-	
+
 }
 
 function checkFirstName() {
@@ -127,7 +159,7 @@ function checkFirstName() {
 		errFName.style.display='none';
 		return true;
 	}
-	
+
 }
 
 function checkLastName(){
@@ -141,7 +173,7 @@ function checkLastName(){
 		errLName.style.display='none';
 		return true;
 	}
-	
+
 }
 
 function submitTest(){
@@ -152,9 +184,9 @@ function submitTest(){
 			result = checkFirstName() && result;
 			result = checkLastName() && result;
 			if(!result){
-				alert("Please fill in all information");				
+				alert("Please fill in all information");
 			}else{
-				alert("Successfully registered");	
+				alert("Successfully registered");
 				}
 			return result;
 }
@@ -164,20 +196,20 @@ function showOther(){
 	var ntext=document.getElementById("nother");
 	var selectvalue=document.getElementById("language").value;
 	if(selectvalue=='other'){
-		ntext.style.display="inline-block";	
+		ntext.style.display="inline-block";
 		}
 	else{
 		ntext.style.display="none";
 		}
-	
+
 	var ptext=document.getElementById("pother");
 	var selectvalue2=document.getElementById("planguage").value;
 	if(selectvalue2=='other'){
-		ptext.style.display="inline-block";	
+		ptext.style.display="inline-block";
 		}
 	else{
 		ptext.style.display="none";
-		}	
+		}
 	}
 
 function addAnother(){
@@ -190,20 +222,18 @@ function addAnother(){
 		newinput.setAttribute("type","text");
 		newinput.setAttribute("name","newtopic");
 		newinput.setAttribute("id",i);
-		newinput.setAttribute("placeholder","Topic");		
+		newinput.setAttribute("placeholder","Topic");
 		p.appendChild(newinput);
 		newa.setAttribute("href","#");
 		p.appendChild(newa);
-		newimg.setAttribute("src","images/delete.png");	
+		newimg.setAttribute("src","images/delete.png");
 		newa.appendChild(newimg);
-		newimg.onclick = function(){					
+		newimg.onclick = function(){
 			this.parentNode.parentNode.removeChild(document.getElementById(i));
 			this.parentNode.parentNode.removeChild(this.parentNode);
 			};
 		}
 	else{
 		alert("Maximum number of add toipcs is 3.");
-		}	
+		}
 	}
-	
-	

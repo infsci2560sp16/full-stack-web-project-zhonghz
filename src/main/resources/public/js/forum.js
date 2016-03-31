@@ -1,15 +1,17 @@
+
+
 function viewmore(obj){
 	var view=document.getElementById("view1");
 	var demo=document.getElementById("demo1");
 	if(view.innerHTML=="View Short Description"){
 		var para=document.createElement("p");
 		var text=document.createTextNode("short description of the discussion, limit in 100 words.");
-		para.appendChild(text);		
+		para.appendChild(text);
 		demo.appendChild(para);
 		view.innerHTML="Close";}
 		else{
 			view.innerHTML="View Short Description";
-			demo.removeChild(demo.lastChild);}					
+			demo.removeChild(demo.lastChild);}
 	}
 function viewmore2(obj){
 	var view=document.getElementById("view2");
@@ -17,12 +19,12 @@ function viewmore2(obj){
 	if(view.innerHTML=="View Short Description"){
 		var para=document.createElement("p");
 		var text=document.createTextNode("short description of the discussion, limit in 100 words.");
-		para.appendChild(text);		
+		para.appendChild(text);
 		demo.appendChild(para);
 		view.innerHTML="Close";}
 		else{
 			view.innerHTML="View Short Description";
-			demo.removeChild(demo.lastChild);}					
+			demo.removeChild(demo.lastChild);}
 	}
 
 function viewmore3(obj){
@@ -31,12 +33,12 @@ function viewmore3(obj){
 	if(view.innerHTML=="View Short Description"){
 		var para=document.createElement("p");
 		var text=document.createTextNode("short description of the discussion, limit in 100 words.");
-		para.appendChild(text);		
+		para.appendChild(text);
 		demo.appendChild(para);
 		view.innerHTML="Close";}
 		else{
 			view.innerHTML="View Short Description";
-			demo.removeChild(demo.lastChild);}					
+			demo.removeChild(demo.lastChild);}
 	}
 function viewmore4(obj){
 	var view=document.getElementById("view4");
@@ -44,12 +46,12 @@ function viewmore4(obj){
 	if(view.innerHTML=="View Short Description"){
 		var para=document.createElement("p");
 		var text=document.createTextNode("short description of the discussion, limit in 100 words.");
-		para.appendChild(text);		
+		para.appendChild(text);
 		demo.appendChild(para);
 		view.innerHTML="Close";}
 		else{
 			view.innerHTML="View Short Description";
-			demo.removeChild(demo.lastChild);}					
+			demo.removeChild(demo.lastChild);}
 	}
 function viewmore5(obj){
 	var view=document.getElementById("view5");
@@ -57,12 +59,12 @@ function viewmore5(obj){
 	if(view.innerHTML=="View Short Description"){
 		var para=document.createElement("p");
 		var text=document.createTextNode("short description of the discussion, limit in 100 words.");
-		para.appendChild(text);		
+		para.appendChild(text);
 		demo.appendChild(para);
 		view.innerHTML="Close";}
 		else{
 			view.innerHTML="View Short Description";
-			demo.removeChild(demo.lastChild);}					
+			demo.removeChild(demo.lastChild);}
 	}
 function viewmore6(obj){
 	var view=document.getElementById("view6");
@@ -70,10 +72,10 @@ function viewmore6(obj){
 	if(view.innerHTML=="View Short Description"){
 		var para=document.createElement("p");
 		var text=document.createTextNode("short description of the discussion, limit in 100 words.");
-		para.appendChild(text);		
+		para.appendChild(text);
 		demo.appendChild(para);
 		view.innerHTML="Close";}
 		else{
 			view.innerHTML="View Short Description";
-			demo.removeChild(demo.lastChild);}					
+			demo.removeChild(demo.lastChild);}
 	}

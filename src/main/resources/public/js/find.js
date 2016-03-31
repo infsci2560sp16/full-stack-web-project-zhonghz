@@ -1,6 +1,7 @@
 $(function () {
   $.ajax({
     url: "/api/find",
+    type : "get",
     success: function (result) {
       var member = JSON.parse(result);
       for (var i = 0; i < member.length; i++) {
