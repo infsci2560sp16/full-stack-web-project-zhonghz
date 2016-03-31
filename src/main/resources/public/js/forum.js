@@ -6,7 +6,7 @@ function browseThread () {
 		type : "get",
 		success : function(result) {
 			$("#inv").html("");
-			console.log(result);
+			console.log(result);//Testing
 			threads = result.getElementsByTagName("thread");
 			for ( var i = 0; i < threads.length; i++) {
         $("div#demos").append('<div class="edemo" id="demo1">'+
