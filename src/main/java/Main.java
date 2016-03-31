@@ -150,6 +150,7 @@ public class Main {
         }
       });
 
+      //GET XML
       get("api/forum", (req, res) -> {
 
           Connection connection = null;
@@ -160,22 +161,22 @@ public class Main {
               //Connect to Database and execute SQL Query
               connection = DatabaseUrl.extract().getConnection();
               Statement stmt = connection.createStatement();
-              ResultSet rs = stmt.executeQuery("SELECT title,username,threads.planguage AS language,threads.topic AS topic,description FROM users,threads WHERE users.email=threads.email");
-              String title = rs.getString("title");
-              String username = rs.getString("username");
-              String language = rs.getString("language");
-              String topic = rs.getString("topic");
-              String description = rs.getString("description");
+              ResultSet rs = stmt.executeQuery("SELECT title,username,threads.planguage,threads.topic,description FROM users,threads WHERE users.email=threads.email");
+              // String title = rs.getString("title");
+              // String username = rs.getString("username");
+              // String language = rs.getString("language");
+              // String topic = rs.getString("topic");
+              // String description = rs.getString("description");
 
               String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
               xml += "<forum>";
               while (rs.next()) {
               xml += "<thread>";
-						  xml += "<title>"+title+"</title>";
-						  xml += "<username>"+username+"</username>";
-						  xml += "<language>"+language+"</language>";
-						  xml += "<topic>"+topic+"</topic>";
-						  xml += "<description>"+topic+"</description>";
+						  xml += "<title>"+rs.getString("title")+"</title>";
+						  xml += "<username>"+rs.getString("username")+"</username>";
+						  xml += "<language>"+rs.getString("threads.planguage")+"</language>";
+						  xml += "<topic>"+rs.getString("threads.topic")+"</topic>";
+						  xml += "<description>"+rs.getString("description")+"</description>";
 					    xml += "</thread>";
               }
               xml += "</forum>";
