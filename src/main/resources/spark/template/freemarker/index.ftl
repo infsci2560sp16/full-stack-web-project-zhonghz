@@ -25,40 +25,24 @@
    <p><a id="join" href="registration.html">Join Us!</a></p>
 
    <h3><a href="#"><br/>Recommended Topics for ${dayOfWeek}</a></h3>
-   <!-- <h3>${dayOfWeek}</h3>
-<#if dayOfWeek == "Monday">
-        <div class="notification">Monday Task: Audit Network for New Devices</div>
 
-<#elseif dayOfWeek == "Tuesday">
-        <div class="notification">Tuesday Task: Create Report for Department Managers</div>
+        <#if dayOfWeek == "Monday"|| dayOfWeek == "Wednesday"|| dayOfWeek == "Friday">
 
-<#elseif dayOfWeek == "Wednesday">
-        <div class="notification">Wednesday Task: Test Network Security</div>
+        <#list 0..oddtopics?size-1 as i>
+        <h4>${eventopics[i]}</h4>
+        </#list>
 
-<#elseif dayOfWeek == "Thursday">
-        <div class="notification">Thursday Task: Review Server Logs</div>
+       <#elseif dayOfWeek == "Tuesday"|| dayOfWeek == "Thursday">
+       <#list 0..oddtopics?size-1 as i>
+       <h4>${oddtopics[i]}</h4>
+       </#list>
 
-<#elseif dayOfWeek == "Friday">
-        <div class="notification">Friday Task: Buy Lunch for Support Technicians</div>
-
-<#else>
-        <div class="notification">Why are you working on the weekend?!</div>
-
-</#if> -->
-
-   <#if dayOfWeek == "Tuesday"|| dayOfWeek == "Thursday">
-   <#list 0..oddtopics?size-1 as i>
-   <h4>${eventopics[i]}</h4>
-   </#list>
-   <#elseif dayOfWeek == "Monday"|| dayOfWeek == "Wesnesday"||day == "Friday">
-   <#list 0..oddtopics?size-1 as i>
-   <h4>${oddtopics[i]}</h4>
-   </#list>
-   <#else dayOfWeek == "Saturday"|| dayOfWeek == "Sunday">
-   <#list 0..oddtopics?size-1 as i>
-   <h4>${weektopics[i]}</h4>
-   </#list>
-   </#if>
+        <#else>
+        <#list 0..oddtopics?size-1 as i>
+        <h4>${weektopics[i]}</h4>
+        </#list>
+        
+        </#if>
 
    </div>
   </div>

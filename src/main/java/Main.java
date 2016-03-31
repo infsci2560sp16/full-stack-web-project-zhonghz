@@ -2,6 +2,8 @@ import com.google.gson.Gson;
 import org.json.JSONObject;
 import java.sql.*;
 import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
@@ -37,7 +39,7 @@ public class Main {
     get("/hello", (req, res) -> "Hello World");
 
     //ftl
-    get("/index", (request, response) -> {
+    get("/index", (req, res) -> {
             Map<String, Object> attributes = new HashMap<>();
 
             ArrayList<String> oddtopics = new ArrayList<String>();
@@ -57,6 +59,9 @@ public class Main {
 
             SimpleDateFormat formatter = new SimpleDateFormat("EEEE");
             String dayOfWeek = formatter.format(new Date());
+            //Testing
+            System.out.println(dayOfWeek);
+            System.out.println(weektopics);
 
             attributes.put("oddtopics", oddtopics);
             attributes.put("eventopics", eventopics);
