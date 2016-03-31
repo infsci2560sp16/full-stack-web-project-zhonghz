@@ -131,12 +131,6 @@ public class Main {
 
           // ResultSet rs = stmt.executeQuery("SELECT * FROM users where make ='" + username + "'");
 
-
-           //**Testing**
-         System.out.println(username);
-         System.out.println(email);
-         System.out.println(password);
-
          return req.body();
         } catch (Exception e) {
           return e.getMessage();
