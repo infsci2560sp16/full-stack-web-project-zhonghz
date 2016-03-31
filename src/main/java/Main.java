@@ -123,11 +123,14 @@ public class Main {
           String planguage = obj.getString("planguage");
           String topic = obj.getString("topic");
 
-          String sql = "INSERT INTO VALUES ('"+ username + "','" + password + "','" + email + "','" + fname + "','"+ lname + "','" + gender + "','" + language + "','" + planguage + "')";
+          String sql = "INSERT INTO VALUES ('"+ username + "','" + password + "','" + email + "','" + fname + "','"+ lname + "','" + gender + "','" + language + "','" + planguage + "','" + topic + "')";
 
           connection = DatabaseUrl.extract().getConnection();
           Statement stmt = connection.createStatement();
           stmt.executeUpdate(sql);
+
+          // ResultSet rs = stmt.executeQuery("SELECT * FROM users where make ='" + username + "'");
+
 
            //**Testing**
          System.out.println(username);
@@ -138,7 +141,7 @@ public class Main {
         } catch (Exception e) {
           return e.getMessage();
         } finally {
-
+          if (connection != null) try{connection.close();} catch(SQLException e){}
         }
       });
 
