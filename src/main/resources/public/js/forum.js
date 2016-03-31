@@ -1,4 +1,6 @@
 //XML GET
+//function browseThread ()
+window.onload = browseThread;
 function browseThread () {
 	$.ajax({
 		url : "/api/forum",

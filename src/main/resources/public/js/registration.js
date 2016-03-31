@@ -2,7 +2,7 @@ window.onload = init;
 
 $(function(){
         $("#submit").click(function(){
-      // '{"username":"ting","email":"tingli1101376@gmail.com","password":"123",cpassword:"123"}',
+
         var username = $("#username").val();
 				var password = $("#password").val();
         var email = $("#email").val();
@@ -12,7 +12,7 @@ $(function(){
 				var language =$("#language").val();
 				var planguage =$("#planguage").val();
 				var topic =$("#topic").val();
-				// var send = JSON.stringify({"username":username,"email":email,"password":password,"cpassword":password});
+
         var obj = JSON.stringify({"username":username,"password":password,
 																	"email":email,"fname":fname,"lname":lname,
 																	"gender":gender,"language":language,"planguage":planguage,"topic":topic});

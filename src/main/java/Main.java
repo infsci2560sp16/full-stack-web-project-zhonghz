@@ -162,14 +162,11 @@ public class Main {
               connection = DatabaseUrl.extract().getConnection();
               Statement stmt = connection.createStatement();
               ResultSet rs = stmt.executeQuery("SELECT title,username,threads.planguage,threads.topic,description FROM users,threads WHERE users.email=threads.email");
-              // String title = rs.getString("title");
-              // String username = rs.getString("username");
-              // String language = rs.getString("language");
-              // String topic = rs.getString("topic");
-              // String description = rs.getString("description");
 
-              String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-              xml += "<forum>";
+
+              // String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+              // xml += "<forum>";
+              String xml = "<forum>";
               while (rs.next()) {
               xml += "<thread>";
 						  xml += "<title>"+rs.getString("title")+"</title>";
@@ -180,7 +177,6 @@ public class Main {
 					    xml += "</thread>";
               }
               xml += "</forum>";
-              System.out.println(xml);
               res.type("text/xml");
               return xml;
 
