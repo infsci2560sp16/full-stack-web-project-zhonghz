@@ -164,9 +164,8 @@ public class Main {
               ResultSet rs = stmt.executeQuery("SELECT title,username,threads.planguage,threads.topic,description FROM users,threads WHERE users.email=threads.email");
 
 
-              // String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-              // xml += "<forum>";
-              String xml = "<forum>";
+              String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
+              xml += "<forum>";
               while (rs.next()) {
               xml += "<thread>";
 						  xml += "<title>"+rs.getString("title")+"</title>";

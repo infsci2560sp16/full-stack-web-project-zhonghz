@@ -1,5 +1,4 @@
 //XML GET
-//function browseThread ()
 window.onload = browseThread;
 function browseThread () {
 	$.ajax({
@@ -13,7 +12,7 @@ function browseThread () {
         $("div#demos").append('<div class="edemo" id="demo1">'+
         													'<img class="userPic" src="images/userpic.jpg" alt="userpic" width="60" height="60" />'+
         		    									'<h4>'+'<a href="#">'+threads[i].childNodes[0].firstChild.nodeValue+'</a></h4>'+
-        													'<p>'+username+'|'+threads[i].childNodes[2].firstChild.nodeValue+'</p>'+
+        													'<p>'+threads[i].childNodes[1].firstChild.nodeValue+'|'+threads[i].childNodes[2].firstChild.nodeValue+'</p>'+
         	        								'<p class="description">'+threads[i].childNodes[4].firstChild.nodeValue+'</p>'+
         													'<span class="time">'+threads[i].childNodes[3].firstChild.nodeValue+'</span>'+'</div>');
 			}
