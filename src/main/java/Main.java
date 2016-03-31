@@ -174,8 +174,8 @@ public class Main {
               xml += "<thread>";
 						  xml += "<title>"+rs.getString("title")+"</title>";
 						  xml += "<username>"+rs.getString("username")+"</username>";
-						  xml += "<language>"+rs.getString("threads.planguage")+"</language>";
-						  xml += "<topic>"+rs.getString("threads.topic")+"</topic>";
+						  xml += "<language>"+rs.getString("planguage")+"</language>";
+						  xml += "<topic>"+rs.getString("topic")+"</topic>";
 						  xml += "<description>"+rs.getString("description")+"</description>";
 					    xml += "</thread>";
               }
