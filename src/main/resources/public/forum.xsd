@@ -7,6 +7,7 @@
         <xs:element name="thread" maxOccurs="unbounded" minOccurs="0">
           <xs:complexType>
             <xs:sequence>
+              <!-- element one -->
               <xs:element name="title">
                   <xs:simpleType>
                     <xs:restriction base="xs:string">
@@ -14,6 +15,7 @@
                     </xs:restriction>
                   </xs:simpleType>
               </xs:element>
+              <!-- element two-->
               <xs:element name="username">
                   <xs:simpleType>
                     <xs:restriction base="xs:string">
@@ -21,6 +23,7 @@
                     </xs:restriction>
                   </xs:simpleType>
               </xs:element>
+              <!-- element three -->
               <xs:element name="language">
                   <xs:simpleType>
                     <xs:restriction base="xs:string">
@@ -28,6 +31,7 @@
                     </xs:restriction>
                   </xs:simpleType>
               </xs:element>
+              <!-- element four -->
               <xs:element name="topic">
                   <xs:simpleType>
                     <xs:restriction base="xs:string">
@@ -35,6 +39,7 @@
                     </xs:restriction>
                   </xs:simpleType>
               </xs:element>
+              <!-- element five -->
               <xs:element name="description">
                   <xs:simpleType>
                     <xs:restriction base="xs:string">
@@ -42,11 +47,12 @@
                     </xs:restriction>
                   </xs:simpleType>
               </xs:element>
+
             </xs:sequence>
           </xs:complexType>
-        </xs:element>
+        </xs:element><!-- end of element thread -->
       </xs:sequence>
     </xs:complexType>
-  </xs:element>
+  </xs:element><!-- end of element forum -->
 
 </xs:schema>

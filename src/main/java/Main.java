@@ -38,7 +38,7 @@ public class Main {
 
     get("/hello", (req, res) -> "Hello World");
 
-    //ftl
+    //index.ftl
     get("/index", (req, res) -> {
             Map<String, Object> attributes = new HashMap<>();
 
@@ -82,44 +82,36 @@ public class Main {
     //    }, new FreeMarkerEngine());
 
     Gson gson = new Gson();
-    //GET JSON
+    //GET Mthod using JSON--match.html, find.js
     get("api/find", (req, res) -> {
-      Connection connection = null;
-      Map<String, Object> attributes = new HashMap<>();
-      try {
-        connection = DatabaseUrl.extract().getConnection();
+        Connection connection = null;
+        Map<String, Object> attributes = new HashMap<>();
+        try {
+        //Connect to Database and execute SQL Query
+          connection = DatabaseUrl.extract().getConnection();
+          Statement stmt = connection.createStatement();
+          ResultSet rs = stmt.executeQuery("SELECT username, nlanguage, planguage FROM users");
 
-        Statement stmt = connection.createStatement();
-        // stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-        // stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-        ResultSet rs = stmt.executeQuery("SELECT username, nlanguage, planguage FROM users");
-
-        //Map<String, Object> data = new HashMap<>();
-        //ArrayList<String> output = new ArrayList<String>();
-        List<Object> data = new ArrayList<>();
-        while (rs.next()) {
-          Map<String, Object> member = new HashMap<>();
-          member.put("username", rs.getString("username"));
-          member.put("nlanguage", rs.getString("nlanguage"));
-          member.put("planguage", rs.getString("planguage"));
-          //data.put(rs.getString("username"), member);
-          data.add(member);
+          List<Object> data = new ArrayList<>();
+          while (rs.next()) {
+            Map<String, Object> member = new HashMap<>();
+            member.put("username", rs.getString("username"));
+            member.put("nlanguage", rs.getString("nlanguage"));
+            member.put("planguage", rs.getString("planguage"));
+            data.add(member);
+          }
+          return data;
+        } catch (Exception e) {
+          attributes.put("message", "There was an error: " + e);
+          return new ModelAndView(attributes, "error.ftl");
+        } finally {
+          if (connection != null) try{connection.close();} catch(SQLException e){}
         }
-        return data;
-        //attributes.put("results", output);
-        //return new ModelAndView(attributes, "db.ftl");
-      } catch (Exception e) {
-        attributes.put("message", "There was an error: " + e);
-        return new ModelAndView(attributes, "error.ftl");
-      } finally {
-        if (connection != null) try{connection.close();} catch(SQLException e){}
-      }
-    }, gson::toJson);
+      }, gson::toJson);
 
-    //POST JSON
+    //POST Method using JSON --registration.html,registration.js
     post("api/register", (req, res) -> {
           Connection connection = null;
-          //Testing
           System.out.println(req.body());
         try {
           connection = DatabaseUrl.extract().getConnection();
@@ -135,7 +127,7 @@ public class Main {
           String topic = obj.getString("topic");
 
           String sql = "INSERT INTO users VALUES ('"+ username + "','" + password + "','" + email + "','" + fname + "','"+ lname + "','" + gender + "','" + language + "','" + planguage + "','" + topic + "')";
-
+          ///Connect to Database and execute SQL Query
           connection = DatabaseUrl.extract().getConnection();
           Statement stmt = connection.createStatement();
           stmt.executeUpdate(sql);
@@ -147,7 +139,6 @@ public class Main {
 					currentuser.put("email", rs.getString("email"));
 
           return currentuser;
-        //  return req.body();
         } catch (Exception e) {
           return e.getMessage();
         } finally {
@@ -155,11 +146,10 @@ public class Main {
         }
       });
 
-      //GET XML
+      //GET Method using XML-forum.html,forum.js
       get("api/forum", (req, res) -> {
 
           Connection connection = null;
-          // res.type("application/xml"); //Return as XML
 
           Map<String, Object> attributes = new HashMap<>();
           try {
@@ -170,7 +160,7 @@ public class Main {
 
 
               String xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?>";
-              xml += "<forum xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:SchemaLocation=\"forum.xsd\">";
+              xml += "<forum xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:SchemaLocation=\"https://still-brushlands-7620.herokuapp.com/forum.xsd\">";
               while (rs.next()) {
               xml += "<thread>";
 						  xml += "<title>"+rs.getString("title")+"</title>";

@@ -97,7 +97,7 @@ function checkUsername() {
 	var username = document.getElementById('username');
 	var errUName = document.getElementById('errUname');
 	if (username.value === '' || username.value === '6-12 characters') {
-		errUName.innerHTML='Please enter your user name';
+    errUName.innerHTML='Please enter your user name';
 		errUName.style.display='block';
 		return false;
 	} else if(username.value.length<6||username.value.length>12){
@@ -232,9 +232,9 @@ function addAnother(){
 		newimg.onclick = function(){
 			this.parentNode.parentNode.removeChild(document.getElementById(i));
 			this.parentNode.parentNode.removeChild(this.parentNode);
-			};
-		}
+    };
+	}
 	else{
 		alert("Maximum number of add toipcs is 3.");
-		}
 	}
+}
